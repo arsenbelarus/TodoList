@@ -1,4 +1,6 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
+import {IconButton, TextField} from "@material-ui/core";
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 type AddItemFormPropsType = {
     addItem: (title: string) => void;
@@ -12,7 +14,11 @@ const AddItemForm = (props: AddItemFormPropsType) => {
         setError("");
         setTitle(e.currentTarget.value)
     };
-    const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => { if (e.charCode === 13) {addItem()} };
+    const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.charCode === 13) {
+            addItem()
+        }
+    };
     const addItem = () => {
         if (title.trim() !== "") {
             props.addItem(title);
@@ -24,15 +30,20 @@ const AddItemForm = (props: AddItemFormPropsType) => {
 
 
     return (
-        <div>
-            <input value={title}
-                   placeholder={"Type and press Enter"}
-                   onChange={onChangeHandler}
-                   onKeyPress={onKeyPressHandler}
-                   className={error ? error : ""}
+        <div onBlur={() => {setError(null)}}>
+            <TextField
+                variant={"standard"}
+                label={"Type your text here"}
+                value={title}
+                onChange={onChangeHandler}
+                onKeyPress={onKeyPressHandler}
+                error={!!error}
+                helperText={error}
             />
-            <button onClick={addItem}>ADD</button>
-            {error && <div className={"error-message"}>{error}</div>}
+            <IconButton onClick={addItem} color={"primary"}>
+                <AddCircleOutlineIcon />
+            </IconButton>
+
         </div>
     )
 }
