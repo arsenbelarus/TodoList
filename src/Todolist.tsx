@@ -67,7 +67,6 @@ function Todolist(props: PropsType) {
                         </IconButton>
                     </Grid>
                 </Grid>
-
             </div>
         )
     });
@@ -80,6 +79,7 @@ function Todolist(props: PropsType) {
                     padding: "0.5rem",
                     fontSize: "1.5rem",
                     boxShadow: "0 0 10px rgba(0, 0, 0, 0.8)",
+                    cursor: 'move',
                 }}>
                     <EditableSpan title={props.title} onFinalChange={changeHeaderTitle}/>
                     <IconButton onClick={removeTodoList}>
