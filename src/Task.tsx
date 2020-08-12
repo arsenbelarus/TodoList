@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from "react";
+import React, {ChangeEvent, useCallback} from "react";
 import {Checkbox, Grid, IconButton} from "@material-ui/core";
 import EditableSpan from "./EditableSpan";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
@@ -14,13 +14,14 @@ type PropsType = {
 }
 
 export const Task = React.memo((props: PropsType) => {
-    const onCheckboxChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const onCheckboxChangeHandler = useCallback ((e: ChangeEvent<HTMLInputElement>) => {
         let newIsDoneValue = e.currentTarget.checked
         props.changeStatus(props.taskId, newIsDoneValue, props.todolistId)
-    }
-    const changeTaskTitle = (value: string) => {
+    },
+        [props.changeStatus, props.taskId, props.todolistId])
+    const changeTaskTitle = useCallback((value: string) => {
         props.onFinalChange(props.taskId, value, props.todolistId)
-    }
+    }, [props.onFinalChange, props.taskId, props.todolistId])
     return (
         <div key={props.taskId} className={props.isDone ? "is-done" : ""}>
             <Grid container justify={"space-between"}>

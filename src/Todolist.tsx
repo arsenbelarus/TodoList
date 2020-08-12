@@ -1,11 +1,6 @@
-import React, {ChangeEvent, useCallback} from "react";
+import React, {useCallback} from "react";
 import './App.css';
 import {FilterValueType} from "./App";
-import AddItemForm from "./AddItemForm";
-import EditableSpan from "./EditableSpan";
-import {Button, Checkbox, Grid, IconButton} from "@material-ui/core";
-import {Delete} from "@material-ui/icons";
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import {Task} from "./Task";
 import {TodolistHeader} from "./TodolistHeader";
 import {TodolistButtons} from "./TodolistButtons";
