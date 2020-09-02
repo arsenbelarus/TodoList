@@ -68,7 +68,7 @@ export const TodoListsList = () => {
                         let allTodolistTasks = tasks[tl.id];
 
                         return <Grid item key={tl.id}>
-                            <Paper style={{padding: "10px", backgroundColor: "lightgrey"}}>
+                            <Paper style={{padding: "20px", backgroundColor: "lightgrey"}}>
                                 <Todolist
                                     id={tl.id}
                                     title={tl.title}

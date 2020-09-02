@@ -57,7 +57,8 @@ export const Todolist = React.memo(function (props: PropsType) {
     }
 
     return <div>
-        <h3 style={{textAlign: "center", boxShadow: "2px 2px 2px 2px black"}}>
+        <h3 style={{textAlign: "center", boxShadow: "2px 2px 2px 2px black", display: "flex",
+            justifyContent: "space-around", alignItems: "center"}}>
             <EditableSpan value={props.title} onChange={changeTodolistTitle}/>
             <IconButton onClick={removeTodolist}>
                 <Delete/>
