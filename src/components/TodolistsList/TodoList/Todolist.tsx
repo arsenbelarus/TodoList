@@ -1,13 +1,13 @@
 import React, {useCallback, useEffect} from 'react'
-import {AddItemForm} from './AddItemForm'
-import {EditableSpan} from './EditableSpan'
+import {AddItemForm} from '../../AddItemForm/AddItemForm'
+import {EditableSpan} from '../../EditableSpan/EditableSpan'
 import {Button, IconButton} from '@material-ui/core'
 import {Delete} from '@material-ui/icons'
-import {Task} from './Task'
-import {TaskStatuses, TaskType} from './api/todolists-api'
-import {FilterValuesType} from './state/todolists-reducer'
+import {Task} from './Tasks/Task'
+import {TaskStatuses, TaskType} from '../../../api/todolists-api'
+import {FilterValuesType} from '../../../state/todolists-reducer'
 import {useDispatch} from "react-redux";
-import {setTasksTC} from "./state/tasks-reducer";
+import {setTasksTC} from "../../../state/tasks-reducer";
 
 type PropsType = {
     id: string
@@ -57,12 +57,15 @@ export const Todolist = React.memo(function (props: PropsType) {
     }
 
     return <div>
-        <h3><EditableSpan value={props.title} onChange={changeTodolistTitle}/>
+        <h3 style={{textAlign: "center", boxShadow: "2px 2px 2px 2px black"}}>
+            <EditableSpan value={props.title} onChange={changeTodolistTitle}/>
             <IconButton onClick={removeTodolist}>
                 <Delete/>
             </IconButton>
         </h3>
-        <AddItemForm addItem={addTask}/>
+        <div style={{textAlign: "center"}}>
+            <AddItemForm addItem={addTask}/>
+        </div>
         <div>
             {
                 tasksForTodolist.map(t => <Task key={t.id} task={t} todolistId={props.id}
@@ -72,7 +75,7 @@ export const Todolist = React.memo(function (props: PropsType) {
                     />)
             }
         </div>
-        <div style={{paddingTop: '10px'}}>
+        <div style={{paddingTop: '10px', textAlign: "center"}}>
             <Button variant={props.filter === 'all' ? 'outlined' : 'text'}
                     onClick={onAllClickHandler}
                     color={'default'}
