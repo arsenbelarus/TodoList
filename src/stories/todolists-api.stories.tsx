@@ -57,7 +57,9 @@ export const UpdateTodolistTitle = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
         const todolistId = '1490c9b5-19c9-44a8-bc18-5ca4f1597cfa'
-        todolistsAPI.updateTodolist(todolistId, {title: "dd", addedDate: "dd", order: 0, id: "dd", filter: "all"})
+        todolistsAPI.updateTodolist(todolistId, {
+            title: "dd", addedDate: "dd", order: 0, id: "dd",
+            filter: "all", entityStatus: "idle"})
             .then((res) => {
                 debugger;
                 setState(res.data)
