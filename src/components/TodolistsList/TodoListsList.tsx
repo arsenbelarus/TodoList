@@ -4,24 +4,32 @@ import {AppRootStateType} from "../../state/store";
 import {
     changeTodoListFilterTC, changeTodoListTitleTC, createTodoListsTC,
     FilterValuesType,
-    removeTodoListsTC,
+    removeTodoListsTC, setTodoListsTC,
     TodolistDomainType
 } from "../../state/todolists-reducer";
-import React, {useCallback} from "react";
+import React, {useCallback, useEffect} from "react";
 import {addTasksTC, removeTaskTC, updateTaskStatusTC, updateTaskTitleTC} from "../../state/tasks-reducer";
 import {Grid, Paper} from "@material-ui/core";
 import {AddItemForm} from "../AddItemForm/AddItemForm";
 import {Todolist} from "./TodoList/Todolist";
+import { Redirect } from "react-router-dom";
 
 export const TodoListsList = () => {
 
     type TasksStateType = {
         [key: string]: Array<TaskType>
     }
-
     const todolists = useSelector<AppRootStateType, Array<TodolistDomainType>>(state => state.todolists)
     const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
+    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (!isLoggedIn) {
+            return
+        }
+        dispatch(setTodoListsTC())
+    }, [isLoggedIn])
 
     const removeTask = useCallback(function (id: string, todolistId: string) {
         dispatch(removeTaskTC(id, todolistId));
@@ -57,6 +65,10 @@ export const TodoListsList = () => {
         dispatch(createTodoListsTC(title));
     }, [dispatch]);
 
+    if (!isLoggedIn) {
+        return <Redirect to={"/login"}/>
+    }
+
     return (
         <>
             <Grid container style={{padding: "20px", justifyContent: "center"}}>
@@ -68,7 +80,7 @@ export const TodoListsList = () => {
                         let allTodolistTasks = tasks[tl.id];
 
                         return <Grid item key={tl.id}>
-                            <Paper style={{padding: "20px", backgroundColor: "lightgrey"}}>
+                            <Paper style={{padding: "20px", backgroundColor: "#efc700", color: "ivory"}}>
                                 <Todolist
                                     id={tl.id}
                                     title={tl.title}
