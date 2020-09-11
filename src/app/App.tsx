@@ -47,6 +47,7 @@ function App() {
       </AppBar>
       {status === "loading" && <LinearProgress color="primary"/>}
       <Container fixed>
+        <Route exact path={'/TodoList'} render={() => <TodoListsList/>}/>
         <Route exact path={'/'} render={() => <TodoListsList/>}/>
         <Route path={'/login'} render={() => <Login/>}/>
       </Container>
