@@ -45,7 +45,7 @@ export const Login = () => {
   }
 
   return <Grid container justify="center" >
-    <Grid item xs={4} style={{padding: "20px", backgroundColor: "#efc700", color: "ivory", marginTop: "40px",
+    <Grid item style={{padding: "20px", backgroundColor: "#efc700", color: "ivory", marginTop: "40px",
     borderRadius: "10px", textAlign: "center", boxShadow: "0 0 5px 1px lightgrey"}}>
       <form onSubmit={formik.handleSubmit}>
         <FormControl>
