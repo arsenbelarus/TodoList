@@ -38,7 +38,6 @@ export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<ActionsTyp
 }
 
 export const logoutTC = () => async (dispatch: Dispatch<ActionsType>) => {
-  debugger
   dispatch(setAppStatusAC('loading'))
   const res = await authAPI.logout()
   try {

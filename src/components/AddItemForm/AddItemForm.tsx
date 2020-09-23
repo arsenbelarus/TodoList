@@ -45,7 +45,7 @@ export const AddItemForm = React.memo(function(props: AddItemFormPropsType) {
                    label="Title"
                    helperText={error}
                    disabled={props.entityStatus === "loading"}
-                   style={{backgroundColor: "#efc700", boxShadow: "0 0 5px 1px lightgrey"}}
+                   style={{backgroundColor: "#efc700"}}
         />
         <IconButton color="primary" onClick={addItem} disabled={props.entityStatus === "loading"}>
             <AddBox />

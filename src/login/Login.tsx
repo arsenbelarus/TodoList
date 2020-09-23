@@ -55,9 +55,9 @@ export const Login = () => {
                  target={'_blank'}> here
               </a>
             </p>
-            <p>or use common test account credentials:</p>
-            <p>Email: free@samuraijs.com</p>
-            <p>Password: free</p>
+            <p>or use my account credentials:</p>
+            <p>Email: arsenbelarus@gmail.com</p>
+            <p>Password: 2786856</p>
           </FormLabel>
           <FormGroup>
             <TextField
